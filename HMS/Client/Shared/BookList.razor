@@ -1,0 +1,47 @@
+﻿@if (book == null)
+{
+    @*<text>Loading Items.....</text>*@
+    @if (NullTemplate != null)
+    {
+        @NullTemplate
+    }
+    else
+    {
+        <text> Child Content is null</text>
+    }
+
+}
+else if (book.Count == 0)
+{
+    @if (EmptyTemplate != null)
+    {
+        @EmptyTemplate
+    }
+    else
+    {
+        <text> The count is zero</text>
+    }
+}
+else
+{
+
+    <input type="checkbox" @bind="displayButtons" />
+    @foreach (var book_ in book)
+    {
+        <IndividualBookList book=" book_ " DisplayButtons="displayButtons" DeleteBooks="DeleteBook"></IndividualBookList>
+        <div>
+
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public List<Books> book { get; set; }
+    [Parameter] public RenderFragment NullTemplate { get; set; }
+    [Parameter] public RenderFragment EmptyTemplate { get; set; }
+    bool displayButtons = false;
+    private void DeleteBook(Books books)
+    {
+        book.Remove(books);
+    }
+}

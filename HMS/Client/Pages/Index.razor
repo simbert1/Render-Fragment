@@ -1,0 +1,52 @@
+﻿@page "/"
+
+    <div>
+        <h1>
+            Books
+        </h1>
+        @*put the component here*@
+       
+       <BookList book=" book ">
+           <NullTemplate> <span style="color: red">This is for null template ....</span></NullTemplate>
+           <EmptyTemplate><span style="color: blue">This is for empty template ....</span></EmptyTemplate>
+           
+       </BookList>
+    
+    </div>
+<div>
+    <h2>Create Book</h2>
+    <DummyTextBox @attributes=" dummyTextboxParameters"></DummyTextBox>
+</div>
+@code
+{
+    /// <summary>
+    /// create a list of books
+    /// </summary>
+    private List<Books> book= new List<Books>();
+    private Dictionary<string, object> dummyTextboxParameters = new Dictionary<string, object>() { { "placeholder","book name"},{ "disabled","true"} };
+    protected override void OnInitialized()
+    {
+
+        //book = new List<Books>()
+        //{
+        //    new Books()
+        //     {
+        //        Tittle = "<b>Harry Potter</b>",
+        //        ReleaseDate = new DateTime(2008, 9, 8)
+        //    },
+        //     new Books()
+        //     {
+        //        Tittle = "<i>Django</i>",
+        //        ReleaseDate = new DateTime(2009, 7, 8)
+        //    },
+        //      new Books()
+        //     {
+        //        Tittle = "40 Laws of Power",
+        //        ReleaseDate = new DateTime(2018, 4, 8)
+        //    }
+        //};
+    }
+
+
+
+}
